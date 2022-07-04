@@ -121,10 +121,7 @@ public class BankServiceImpl implements BankService{
 
     @Override
     public Account findAccountByAccountNumber(String accountNumber) {
-        log.info("accounts in the repository are ---->{}", accountRepository);
-        log.info("account number is  ---->{}", accountNumber);
         Account account = accountRepository.getOrDefault(accountNumber, null);
-        log.info("account details are ---->{}", account);
         if (account == null){
             throw new CoreBankException("Account Number Invalid");
         }
@@ -137,10 +134,7 @@ public class BankServiceImpl implements BankService{
         if (amountIsValid){
             throw new CoreBankException("Amount to deposit must be between 1.00 and 1,000,000.00");
         }
-        log.info("account to deposit to is ---->{}", accountNumber);
-        log.info("Before account query");
         Account account = findAccountByAccountNumber(accountNumber);
-        log.info("After account query");
         account.setAccountBalance(account.getAccountBalance() + amount);
 
         String description = "Deposit of "+ amount;
