@@ -85,12 +85,12 @@ public class BankServiceImpl implements BankService{
     }
 
     private void validateAccountDto(AccountDto accountDto) {
-        boolean invalidAccountName = accountDto.getAccountName() == null || accountDto.getAccountName().isEmpty() || accountDto.getAccountName().isBlank();
+        boolean invalidAccountName = accountDto.getAccountName() == null || accountDto.getAccountName().isEmpty() ;//|| accountDto.getAccountName().isBlank();
         if(invalidAccountName){
             throw new CoreBankException("Enter a valid account name");
         }
 
-        boolean invalidPassword = accountDto.getAccountPassword() == null || accountDto.getAccountPassword().isEmpty() || accountDto.getAccountPassword().isBlank();
+        boolean invalidPassword = accountDto.getAccountPassword() == null || accountDto.getAccountPassword().isEmpty();// || accountDto.getAccountPassword().isBlank();
 
         if(invalidPassword){
             throw new CoreBankException("Enter a valid password");
